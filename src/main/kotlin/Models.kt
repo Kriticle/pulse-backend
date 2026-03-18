@@ -18,7 +18,8 @@ data class ExerciseDto(
     val name: String,
     val category: String,
     val muscleGroup: String,
-    val instruction: String
+    val instruction: String,
+    val animationFile: String? = null
 )
 
 @Serializable

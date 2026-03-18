@@ -130,6 +130,13 @@ fun Application.configureRouting() {
     }
 }
 
+// TODO: implement auto difficulty calculation
+// difficulty = sum((bpm/60) * duration * exerciseWeight) / activeSegmentCount
+// exerciseWeight: cardio=1.0, pilates=0.7, rest=0.0
+fun calculateLevelDifficulty(segments: List<SegmentDto>, bpmMap: Map<String, Int>): Int {
+    return 1 // placeholder — manual difficulty for now
+}
+
 fun buildLevelDto(levelRow: ResultRow): LevelDto {
     val segments = LevelSegmentTable.selectAll()
         .where { LevelSegmentTable.levelId eq levelRow[LevelTable.id] }
@@ -167,7 +174,9 @@ fun buildLevelDto(levelRow: ResultRow): LevelDto {
                     name = exercise[ExerciseTable.name],
                     category = exercise[ExerciseTable.category],
                     muscleGroup = exercise[ExerciseTable.muscleGroup],
-                    instruction = exercise[ExerciseTable.instruction]
+                    instruction = exercise[ExerciseTable.instruction],
+                    animationFile = exercise[ExerciseTable.animationFile]
+
                 ),
                 song = song,
                 loopCount = levelSegmentRow[LevelSegmentTable.loopCount]
@@ -180,4 +189,6 @@ fun buildLevelDto(levelRow: ResultRow): LevelDto {
         unlockScoreRequired = levelRow[LevelTable.unlockScoreRequired],
         segments = segments
     )
+
+
 }

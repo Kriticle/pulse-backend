@@ -61,6 +61,7 @@ object ExerciseTable : Table("exercises") {
     val category = varchar("category", 64)
     val muscleGroup = varchar("muscle_group", 128)
     val instruction = text("instruction")
+    val animationFile = varchar("animation_file", 256).nullable()
     override val primaryKey = PrimaryKey(id)
 }
 
