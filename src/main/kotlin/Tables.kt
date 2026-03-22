@@ -97,3 +97,9 @@ object UnlockedItemTable : Table("unlocked_items") {
     val unlockedAt = long("unlocked_at")
     override val primaryKey = PrimaryKey(userId, itemId)
 }
+
+object LevelCategoryTable : Table("level_categories") {
+    val levelId = varchar("level_id", 36).references(LevelTable.id)
+    val category = varchar("category", 64)
+    override val primaryKey = PrimaryKey(levelId, category)
+}

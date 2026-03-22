@@ -26,7 +26,8 @@ fun Application.configureDatabases() {
             LevelAttemptTable,
             UnlockedLevelTable,
             ItemTable,
-            UnlockedItemTable
+            UnlockedItemTable,
+            LevelCategoryTable
         )
     }
 }

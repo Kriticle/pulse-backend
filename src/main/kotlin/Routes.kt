@@ -176,19 +176,22 @@ fun buildLevelDto(levelRow: ResultRow): LevelDto {
                     muscleGroup = exercise[ExerciseTable.muscleGroup],
                     instruction = exercise[ExerciseTable.instruction],
                     animationFile = exercise[ExerciseTable.animationFile]
-
                 ),
                 song = song,
                 loopCount = levelSegmentRow[LevelSegmentTable.loopCount]
             )
         }
+
+    val categories = LevelCategoryTable.selectAll()
+        .where { LevelCategoryTable.levelId eq levelRow[LevelTable.id] }
+        .map { it[LevelCategoryTable.category] }
+
     return LevelDto(
         id = levelRow[LevelTable.id],
         title = levelRow[LevelTable.title],
         difficulty = levelRow[LevelTable.difficulty],
         unlockScoreRequired = levelRow[LevelTable.unlockScoreRequired],
-        segments = segments
+        segments = segments,
+        categories = categories
     )
-
-
 }

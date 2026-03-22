@@ -40,7 +40,8 @@ data class LevelDto(
     val title: String,
     val difficulty: Int,
     val unlockScoreRequired: Int,
-    val segments: List<SegmentDto>
+    val segments: List<SegmentDto>,
+    val categories: List<String> = emptyList()
 )
 
 @Serializable
